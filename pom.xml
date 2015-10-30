@@ -6,6 +6,23 @@
   <version>0.0.6-SNAPSHOT</version>
   <packaging>maven-plugin</packaging>
   <name>chronos-maven-plugin Maven Plugin</name>
+  <description>chronos-maven-plugin Maven Plugin</description>
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <id>akursar</id>
+      <name>Andrew R Kursar</name>
+      <email>drew@kursar.org</email>
+      <organization>PulsePoint</organization>
+      <organizationUrl>http://www.pulsepoint.com/</organizationUrl>
+    </developer>
+  </developers>
   <prerequisites>
     <maven>3.0.0</maven>
   </prerequisites>
