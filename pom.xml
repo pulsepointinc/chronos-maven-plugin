@@ -6,6 +6,22 @@
   <version>0.0.2-SNAPSHOT</version>
   <packaging>maven-plugin</packaging>
   <name>chronos-maven-plugin Maven Plugin</name>
+  <scm>
+    <connection>scm:git:git@github.com:pulsepointinc/chronos-maven-plugin.git</connection>
+    <developerConnection>scm:git:git@github.com:pulsepointinc/chronos-maven-plugin.git</developerConnection>
+    <tag>HEAD</tag>
+    <url>scm:git:git@github.com:pulsepointinc/chronos-maven-plugin.git</url>
+  </scm>
+  <distributionManagement>
+    <repository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+    </repository>
+    <snapshotRepository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
