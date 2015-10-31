@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.pulsepoint</groupId>
   <artifactId>chronos-maven-plugin</artifactId>
-  <version>0.0.9-SNAPSHOT</version>
+  <version>0.1.0</version>
   <packaging>maven-plugin</packaging>
   <name>chronos-maven-plugin Maven Plugin</name>
   <description>chronos-maven-plugin Maven Plugin</description>
@@ -30,7 +30,7 @@
   <scm>
     <connection>scm:git:git@github.com:pulsepointinc/chronos-maven-plugin.git</connection>
     <developerConnection>scm:git:git@github.com:pulsepointinc/chronos-maven-plugin.git</developerConnection>
-    <tag>HEAD</tag>
+    <tag>chronos-maven-plugin-0.1.0</tag>
     <url>scm:git:git@github.com:pulsepointinc/chronos-maven-plugin.git</url>
   </scm>
   <distributionManagement>
