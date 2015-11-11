@@ -17,22 +17,45 @@ public class ProcessConfigMojo extends AbstractChronosMojo
 
     /**
      * Path to JSON file to read from when processing Chronos config.
-     * Default is ${basedir}/chronos.json
      */
     @Parameter(property = "sourceChronosConfigFile", defaultValue = "${basedir}/chronos.json")
     private String sourceChronosConfigFile;
 
     /**
-     * Image name as specified in pom.xml.
+     * (Optional) Container image for this job.
      */
     @Parameter(property = "image")
     private String image;
 
     /**
-     * Name to use for the Chronos config.
+     * (Optional) Name of the job.
      */
     @Parameter(property = "name")
     private String name;
+
+    /**
+     * (Optional) The scheduling for the job, in ISO 8601 format.
+     */
+    @Parameter(property = "schedule")
+    private String schedule;
+
+    /**
+     * (Optional) Amount of Mesos CPUs for this job.
+     */
+    @Parameter(property = "cpus")
+    private String cpus;
+
+    /**
+     * (Optional) Amount of Mesos Memory (in MB) for this job.
+     */
+    @Parameter(property = "mem")
+    private String mem;
+
+    /**
+     * (Optional) Command to execute.
+     */
+    @Parameter(property = "command")
+    private String command;
 
     public void execute()
         throws MojoExecutionException
@@ -48,6 +71,22 @@ public class ProcessConfigMojo extends AbstractChronosMojo
 
         if (name != null) {
             jsonObject.addProperty("name", name);
+        }
+
+        if (schedule!=null) {
+            jsonObject.addProperty("schedule", schedule);
+        }
+
+        if (cpus!=null) {
+            jsonObject.addProperty("cpus", cpus);
+        }
+
+        if (mem!=null) {
+            jsonObject.addProperty("mem", mem);
+        }
+
+        if (command!=null) {
+            jsonObject.addProperty("command", command);
         }
 
         getLog().info("Modified json: " + jsonObject.toString());

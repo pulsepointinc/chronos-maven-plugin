@@ -22,7 +22,6 @@ public class DeployMojo extends AbstractChronosMojo
 
     /**
      * Full URL where to submit chonos put request
-     * Default is http://localhost:4400/scheduler/iso8601
      */
     @Parameter(property = "chronosPutURL", defaultValue = "http://localhost:4400/scheduler/iso8601")
     protected String chronosPutURL;
