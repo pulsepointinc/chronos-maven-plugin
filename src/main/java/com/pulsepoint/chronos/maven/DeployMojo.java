@@ -11,6 +11,8 @@ import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 
+import java.io.File;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
@@ -26,11 +28,18 @@ public class DeployMojo extends AbstractChronosMojo
     @Parameter(property = "chronosPutURL", defaultValue = "http://localhost:4400/scheduler/iso8601")
     protected String chronosPutURL;
 
-    public void execute()
-        throws MojoExecutionException
+    /**
+     * Directory from which to read all .json files instead of finalChronosConfigFile
+     */
+    @Parameter(property = "finalChronosConfigDir", required = false)
+    protected String finalChronosConfigDir;
+
+
+
+    public void submitJson(String jsonFile) throws MojoExecutionException
     {
 
-        JsonObject jsonObject = readJson(finalChronosConfigFile);
+        JsonObject jsonObject = readJson(jsonFile);
         getLog().info("Deploying: " + jsonObject.toString());
 
         HttpClient httpClient = HttpClientBuilder.create().build();
@@ -57,5 +66,26 @@ public class DeployMojo extends AbstractChronosMojo
             throw new MojoExecutionException("Deploy fail with HTTP error: "
                     + response.getStatusLine().getStatusCode());
         }
+    }
+
+
+    public void execute() throws MojoExecutionException
+    {
+        if (finalChronosConfigDir != null ) {
+            File chronosConfigDir = new File(finalChronosConfigDir);
+
+            File[] chronosConfigFiles = chronosConfigDir.listFiles(new FilenameFilter() {
+                public boolean accept(File dir, String name) {
+                    return name.toLowerCase().endsWith(".json");
+                }
+            });
+
+            for (File chronosConfigFile : chronosConfigFiles) {
+                submitJson(chronosConfigFile.getPath());
+            }
+        } else {
+            submitJson(finalChronosConfigFile);
+        }
+
     }
 }
