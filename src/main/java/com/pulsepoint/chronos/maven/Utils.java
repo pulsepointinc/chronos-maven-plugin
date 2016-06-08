@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.apache.maven.plugin.MojoExecutionException;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -29,7 +30,9 @@ public class Utils {
     public static final void writeJson(JsonObject jsonObject, String fileName) throws MojoExecutionException {
 
         try {
-            FileWriter fileWriter = new FileWriter(fileName);
+            File file = new File(fileName);
+            file.getParentFile().mkdirs();
+            FileWriter fileWriter = new FileWriter(file);
             fileWriter.write(jsonObject.toString());
             fileWriter.close();
         } catch (IOException e) {
