@@ -65,7 +65,7 @@ public class ProcessConfigMojo extends AbstractChronosMojo
 
         getLog().info("Original json: " + jsonObject.toString());
 
-        if (image != null) {
+        if (image != null && jsonObject.has("container")) {
             jsonObject.getAsJsonObject("container").addProperty("image", image);
         }
 
