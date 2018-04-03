@@ -23,6 +23,13 @@
       <organization>PulsePoint</organization>
       <organizationUrl>http://www.pulsepoint.com/</organizationUrl>
     </developer>
+    <developer>
+      <id>mpedersen</id>
+      <name>Michael J. Pedersen</name>
+      <email>mpedersen@pulsepoint.com</email>
+      <organization>PulsePoint</organization>
+      <organizationUrl>http://www.pulsepoint.com/</organizationUrl>
+    </developer>
   </developers>
   <prerequisites>
     <maven>3.0.0</maven>

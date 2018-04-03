@@ -52,6 +52,12 @@ public class ProcessConfigMojo extends AbstractChronosMojo
     private String mem;
 
     /**
+     * (Optional) Amount of Mesos Disk (in MB) for this job.
+     */
+    @Parameter(property = "disk")
+    private String disk;
+
+    /**
      * (Optional) Command to execute.
      */
     @Parameter(property = "command")
@@ -83,6 +89,10 @@ public class ProcessConfigMojo extends AbstractChronosMojo
 
         if (mem!=null) {
             jsonObject.addProperty("mem", mem);
+        }
+
+        if (disk!=null) {
+            jsonObject.addProperty("disk", disk);
         }
 
         if (command!=null) {
